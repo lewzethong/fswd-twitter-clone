@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  require 'bcrypt'
+
   has_many :sessions
   has_many :tweets
 
