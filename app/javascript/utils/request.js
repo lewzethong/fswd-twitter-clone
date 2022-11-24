@@ -74,15 +74,13 @@ export function postTweet(msg, img, successCB) {
     formData.append('tweet[message]', msg);
   }
 
-  if (image) {
-    formData.append('tweet[image]', image, image.name);
+  if (img) {
+    formData.append('tweet[image]', img, img.name);
   }
 
   fetch('/api/tweets', safeCredentialsFormData({
     method: 'POST',
-    body: JSON.stringify({
-      formData
-    })
+    body: formData
   }))
   .then(handleErrors)
   .then(successCB)
