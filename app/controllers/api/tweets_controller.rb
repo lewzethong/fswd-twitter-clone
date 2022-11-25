@@ -12,8 +12,6 @@ module Api
       @tweet = user.tweets.new(tweet_params)
 
       if @tweet.save!
-        @tweet.image.attach(params[:tweet][:image])
-
         # TweetMailer.notify(@tweet).deliver!
 
         render 'api/tweets/create'
@@ -52,7 +50,7 @@ module Api
     private
 
     def tweet_params
-      params.require(:tweet).permit(:message)
+      params.require(:tweet).permit(:message, :image)
     end
   end
 end
