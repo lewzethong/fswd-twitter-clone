@@ -13,6 +13,7 @@ module Api
 
       if @tweet.save
         # TweetMailer.notify(@tweet).deliver!
+        @tweet.image.attach(params[:tweet][:image])
         render 'api/tweets/create'
       end
     end
@@ -41,15 +42,14 @@ module Api
       user = User.find_by(username: params[:username])
 
       if user
-        @tweets = user.tweets
+        @tweets = (user.tweets).order(created_at: :desc)
         render 'api/tweets/index'
       end
     end
 
     private
-
     def tweet_params
-      params.require(:tweet).permit(:message, :image)
+      params.require(:tweet).permit(:message)
     end
   end
 end

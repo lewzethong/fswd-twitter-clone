@@ -6,21 +6,21 @@ export default class ProfileCard extends React.Component {
   }
 
   render () {
-    const { name } = this.props
+    const { username, tweetCount } = this.props
 
     return (
       <>
         <div className="profileCard">
           <div className="profileCard-content">
             <div className="user-field px-3">
-              <a className="username" href="#">{name}</a><br/>
-              <a className="screenName" href="#">@{name}</a>
+              <a className="username" href="#">{username}</a><br/>
+              <a className="screenName" href="#">@{username}</a>
             </div>
             <div className="row user-stats px-3">
               <div className="col-4">
                 <a href="">
                   <span>Tweets<br/></span>
-                  <span className="user-stats-tweets">10</span>
+                  <span className="user-stats-tweets">{tweetCount}</span>
                 </a>
               </div>
               <div className="col-4">

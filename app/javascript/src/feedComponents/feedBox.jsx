@@ -1,6 +1,7 @@
 
 import React from "react";
-import { postTweet } from "../../utils/request";
+import { handleErrors, safeCredentialsFormData } from "../../utils/fetchHelper";
+import { deleteOneTweet, postTweet } from "../../utils/request";
 
 export default class FeedBox extends React.Component {
   constructor(props) {
@@ -26,13 +27,19 @@ export default class FeedBox extends React.Component {
     this.setState({
       [event.target.name]: event.target.files[0]
     })
+    $('#image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
+    $('#image-preview').show();
   }
 
   postUserTweet (event) {
     event.preventDefault();
-    
-    postTweet(this.state.userTweet, this.state.image, (data)=>{
-      console.log(data)
+    postTweet(this.state.userTweet, this.state.image, (data) => {
+      this.setState ({
+        userTweet: '',
+        image: null
+      });
+      $('#image-preview').hide();
+      this.props.reload();
     })
   }
 
@@ -48,6 +55,7 @@ export default class FeedBox extends React.Component {
 
   render () {
     const { userTweet } = this.state
+    const { tweets, username, deletePost } = this.props
 
     return (
       <>
@@ -61,6 +69,22 @@ export default class FeedBox extends React.Component {
               <span className="post-char-counter">140</span>
               <button className="btn btn-primary" disabled id="post-tweet-btn">Tweet</button>
             </div>
+          </div>
+          < div className="feed">
+            {tweets.map((tweet) => {
+              return (
+                <div  key={tweet.id} id={tweet.id} className="tweet">
+                  <a className="tweet-username" href={`/${tweet.username}`} >{tweet.username}</a>
+                  <a className="tweet-screenName" href="#">@{tweet.username}</a>
+                  {/* Delete button available if user = tweet owner */}
+                  {(tweet.username == username) && 
+                  <a className="delete-tweet" href="#" id={tweet.id} onClick={deletePost}>Delete</a>} 
+                  {(tweet.image) && 
+                  <img src={tweet.image} alt="Image" className="img img-fluid"/>}
+                  <p>{tweet.message}</p> 
+                </div>
+              )
+            })}
           </div>
         </form>
       </>

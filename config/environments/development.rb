@@ -75,6 +75,6 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   #file attachment storage location as local in development mode
-  # config.active_storage.service = :amazon
+  config.active_storage.service = :local
   
 end

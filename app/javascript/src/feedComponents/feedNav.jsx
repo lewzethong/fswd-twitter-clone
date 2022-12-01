@@ -5,25 +5,9 @@ export default class FeedNav extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      username: 'test',
-    }
-
-    this.getUserName = this.getUserName.bind(this);
     this.logout = this.logout.bind(this)
+    this.homepage = this.homepage.bind(this)
   };
-
-  componentDidMount () {
-    this.getUserName();
-  }
-
-  getUserName = () => {
-    authenticate((data) => {
-      this.setState({
-        username: data.username
-      })
-    })
-  }
 
   logout = () => {
     logoutUser(success => {
@@ -31,15 +15,19 @@ export default class FeedNav extends React.Component {
     })
   }
 
+  homepage = () => {
+    window.location.href = '/feed'
+  }
+
 
   render() {
-    const {username} = this.state
+    const { username } = this.props
     return (
       <>
         <nav className="navbar navbar-light bg-light py-0 fixed-top">
-          <div className="container">
+          <div className="container mx-0 px-3">
             <div className="navbar-header">
-              <a className="navbar-brand" href="#">
+              <a className="navbar-brand" href="#" onClick={this.homepage}>
                 <i className="fa fa-twitter"></i>
               </a>
             </div>
@@ -52,20 +40,20 @@ export default class FeedNav extends React.Component {
                   </span>
                 </div>
               </div>
-              <div className="nav-item dropdown">
+              <div className="nav-item dropdown ">
                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   {username}
                 </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li ><a href="#" className="username">{username}</a></li>
+                <ul className="dropdown-menu m-0 dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <li ><a href="#" className="username px-2">{username}</a></li>
                   <li role="presentation" className="divider"></li>
-                  <li ><a href="#">Lists</a></li>
+                  <li ><a className="px-2" href="#">Lists</a></li>
                   <li role="presentation" className="divider"></li>
-                  <li ><a href="#">Help</a></li>
-                  <li ><a href="#">Keyboard shortcuts</a></li>
+                  <li ><a className="px-2" href="#">Help</a></li>
+                  <li ><a className="px-2" href="#">Keyboard shortcuts</a></li>
                   <li role="presentation" className="divider"></li>
-                  <li ><a href="#">Settings</a></li>
-                  <li ><a id="log-out" href="#" onClick={this.logout}>Log out</a></li>
+                  <li ><a className="px-2" href="#">Settings</a></li>
+                  <li ><a className="px-2" id="log-out" href="#" onClick={this.logout}>Log out</a></li>
                 </ul>
               </div>
             </div>
