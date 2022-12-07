@@ -65,11 +65,11 @@ class UserPage extends React.Component {
         <FeedNav username={this.state.username}/>
         <div className='main container'>
           <div className='row'>
-            <div className='col-12 col-md-3 profile-trends'>
+            <div className='col-12 col-md-4 profile-trends'>
               <ProfileCard username={this.state.profileName} tweetCount = {this.state.tweetCount} />
               <TrendCard/>
             </div>
-            <div className='col-12 col-md-7 tweet-box'>
+            <div className='col-12 col-md-8 tweet-box'>
               <FeedBox tweets={this.state.tweets} username={this.state.username} reload={this.refreshTweets} userTweetPage={this.getUserTweetPage} deletePost={this.deletePost} profileName={this.state.profileName}/>
             </div>
           </div>

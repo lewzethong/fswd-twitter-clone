@@ -31,9 +31,9 @@ const Home = props => (
     <div className="main">
       <div className="container">
         <div className="row">
-          <div className="front-card col-sm-10 offset-sm-1">
+          <div className="front-card col-md-10 offset-md-1">
             <div className='row'>
-              <div className="col-sm-6 welcome">
+              <div className="col-6 col-md-6 welcome">
                 <div id="welcome-text">
                   <h1><strong>Welcome to Twitter.</strong></h1>
                   <p>Connect with your friends &#8212; and other fascinating people. Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.</p>
@@ -41,7 +41,7 @@ const Home = props => (
                 <p><a href="#" id="twit-info">Hack Pacific - Backendium Twitter Project</a></p>
                 <p><a href="#" id="twit-account">Tweet and photo by @Hackpacific<br/>3:20 PM - 15 December 2016</a></p>
               </div>
-              <div className='col-sm-4 offset-sm-1'>
+              <div className='col-6 col-md-4 offset-md-1'>
                 <div className="log-in">
                   <Login />
                 </div>

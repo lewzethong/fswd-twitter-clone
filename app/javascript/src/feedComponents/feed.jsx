@@ -31,7 +31,8 @@ class Feed extends React.Component {
   refreshTweets = () => {
     getAllTweets((data) => {
       this.setState({
-        tweets: data.tweets
+        tweets: data.tweets,
+        tweetCount: this.state.tweetCount + 1
       })
     })
   }
@@ -77,13 +78,13 @@ class Feed extends React.Component {
     return (
       <>
         <FeedNav username={this.state.username}/>
-        <div className='main container'>
+        <div className='main container mx-0'>
           <div className='row'>
-            <div className='col-12 col-md-3 profile-trends'>
+            <div className='col-12 col-md-4 profile-trends'>
               <ProfileCard username={this.state.username} tweetCount = {this.state.tweetCount} />
               <TrendCard/>
             </div>
-            <div className='col-12 col-md-7 tweet-box'>
+            <div className='col-12 col-md-8 tweet-box'>
               <FeedBox tweets={this.state.tweets} username={this.state.username} reload={this.refreshTweets} userTweetPage={this.getUserTweetPage} deletePost={this.deletePost}/>
             </div>
           </div>

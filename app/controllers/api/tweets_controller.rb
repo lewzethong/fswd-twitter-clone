@@ -15,11 +15,6 @@ module Api
         @tweet.image.attach(params[:tweet][:image])
 
         # TweetMailer.notify(@tweet).deliver!
-<<<<<<< HEAD
-        @tweet.image.attach(params[:tweet][:image])
-=======
-
->>>>>>> a75e1e0ba32e2a0323ad07aed5716b40ffa5e4a0
         render 'api/tweets/create'
       end
     end
@@ -55,7 +50,7 @@ module Api
 
     private
     def tweet_params
-      params.require(:tweet).permit(:message)
+      params.require(:tweet).permit(:message, :image)
     end
   end
 end

@@ -20,6 +20,10 @@
   .navbar {
       width: 575px
   }
+
+  .profile-trends, .follow-footnote {
+    width: 290px;
+  }
 }
 
 .navbar-header {
@@ -45,11 +49,6 @@
   padding-top: 10px;
 }
 
-@media (min-width: 576px) {
-  .profile-trends, .follow-footnote {
-  width: 290px;
-  }
-}
 
 .profileCard {
   background: #fff;
@@ -114,10 +113,6 @@
 .trends-list {
   list-style: none;
   padding-left: 0;
-}
-
-.tweet-box {
-  width: 600px;
 }
 
 .post-tweet-box {
