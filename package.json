@@ -25,5 +25,11 @@
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3"
+  },
+  "scripts": {
+    "dev": "react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "heroku-postbuild": "npm run build"
   }
 }
